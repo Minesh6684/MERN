@@ -1,0 +1,20 @@
+{
+  "name": "feedeveryone",
+  "version": "1.0.0",
+  "description": "Feed Homeless",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "author": "Minesh Tandel",
+  "license": "MIT",
+  "dependencies": {
+    "-": "^0.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
