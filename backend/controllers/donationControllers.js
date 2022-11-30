@@ -70,8 +70,8 @@ const deleteDonation = asyncHandler(async(req, res) => {
         throw new Error("User not Authorized")
     }
 
-    const deletedDonation = await Donations.deleteOne(donation)
-    res.status(200).json(deletedDonation)
+    await Donations.remove(donation)
+    res.status(200).json({id: req.params.id})
 })
 
 module.exports = {

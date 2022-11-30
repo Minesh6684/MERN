@@ -13,7 +13,7 @@ const register = async(userData) => {
     return response.data
 }
 
-const logout = async() => {
+const logout = () => {
     localStorage.removeItem('user')
 }
 
