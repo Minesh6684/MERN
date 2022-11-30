@@ -1,9 +1,9 @@
 import { FaSignInAlt } from 'react-icons/fa'
-import { toast } from 'react-toastify'
 import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
-import {useNavigate} from 'react-router-dom'
-import {login, reset} from '../features/auth/authSlice'
+import { useNavigate } from 'react-router-dom'
+import { login, reset } from '../features/auth/authSlice'
 
 function Login () {
 
@@ -13,10 +13,17 @@ function Login () {
     })
 
     const {email, password} = formData
-    const { user, isLoading, isError, isSuccess, message } = useSelector( (state) => state.auth)
+    const { user, isError, isLoading, isSuccess, message } = useSelector((state) => state.auth)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
 
     useEffect(() => {
         if(isError) {
@@ -26,28 +33,22 @@ function Login () {
         if(isSuccess || user) {
             navigate('/')
         }
-
+            
         dispatch(reset())
-    })
-
-    if(isLoading) {
-        return <h1>Loading...</h1>
-    }
-
-    const onChange = (e) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value
-        }))
-    }
+    }, [dispatch, navigate, user, isSuccess, isError, message])
 
     const onSubmit = (e) => {
         e.preventDefault()
+
         const userData = {
             email,
             password
         }
         dispatch(login(userData))
+    }
+
+    if(isLoading) {
+        return <h1>Loading....</h1>
     }
 
     return (
@@ -61,8 +62,8 @@ function Login () {
 
             <section>
                 <form onSubmit={onSubmit}>
-                    <input type='email' placeholder='Email' name='email' value={email} onChange={onChange}/>
-                    <input type='password' placeholder='Password' name='password' value={password} onChange={onChange}/>
+                    <input type='email' placeholder='Email' name='email' value={email} onChange={onChange} required/>
+                    <input type='password' placeholder='Password' name='password' value={password} onChange={onChange} required/>
                     <input type='submit' value='Login'/>
                 </form>
             </section>

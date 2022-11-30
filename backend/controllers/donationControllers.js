@@ -36,6 +36,13 @@ const updateDonation = asyncHandler(async(req, res) => {
         res.status(400)
         throw new Error('No Donation Found to update')
     }
+
+    if(!req.user) {
+        res.status(401)
+        throw new Error('User Not Found')
+        
+    }
+
     if(req.user.id !== donation.user.toString()){
         res.status(401)
         throw new Error('User not authorized')
@@ -51,6 +58,11 @@ const deleteDonation = asyncHandler(async(req, res) => {
     if (!donation) {
         res.status(400)
         throw new Error("No Donation Found to delete")
+    }
+
+    if(!req.user){
+        res.status(401)
+        throw new Error('User Not found ')
     }
 
     if (req.user.id !== donation.user.toString()) {

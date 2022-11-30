@@ -31,7 +31,7 @@ function Register() {
     }
 
     dispatch(reset())
-  })
+  }, [isError, isSuccess, message, user, navigate, dispatch])
 
   if(isLoading) {
     return <h1>Loading</h1>
