@@ -70,13 +70,23 @@ const deleteDonation = asyncHandler(async(req, res) => {
         throw new Error("User not Authorized")
     }
 
-    await Donations.remove(donation)
+    await Donations.deleteOne(donation)
     res.status(200).json({id: req.params.id})
+})
+
+const getAllDonations = asyncHandler( async (req, res) => {
+    const donations = await Donations.find()
+    if (!donations) {
+        res.status(400)
+        throw new Error('No Donations')
+    }
+    res.status(200).json(donations)
 })
 
 module.exports = {
     getDonations,
     postDonation,
     updateDonation,
-    deleteDonation
+    deleteDonation,
+    getAllDonations
 }

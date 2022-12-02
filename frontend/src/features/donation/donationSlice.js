@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import donationService from './donationService'
 
 const initialState = {
+    allDonations: [],
     donations: [],
     isLoading: false,
     isError: false,
@@ -42,6 +43,16 @@ export const deleteDonation = createAsyncThunk('donations/delete', async(donatio
     }
 })
 
+export const getAllDonations = createAsyncThunk('donations/getAllDonations', async(_, thunkAPI) => {
+    try {
+        return await donationService.getAllDonations()
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message)
+                            || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const donationSlice = createSlice({
     name: 'donation',
     initialState,
@@ -62,6 +73,7 @@ export const donationSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.donations.push(action.payload)
+            state.allDonations.push(action.payload)
         })
         .addCase(getDonations.pending, (state) => {
             state.isLoading = true
@@ -88,6 +100,20 @@ export const donationSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.donations = state.donations.filter((donation) => donation._id !== action.payload.id)
+            state.allDonations = state.allDonations.filter((donation) => donation._id !== action.payload.id)
+        })
+        .addCase(getAllDonations.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(getAllDonations.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+        })
+        .addCase(getAllDonations.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.allDonations = action.payload
         })
     }
 })

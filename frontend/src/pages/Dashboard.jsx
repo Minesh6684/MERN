@@ -4,13 +4,15 @@ import { useNavigate } from 'react-router-dom'
 import DonationForm from '../components/DonationForm'
 import {getDonations, reset} from '../features/donation/donationSlice'
 import DonationItem from '../components/DonationItem'
+import DonationCard from '../components/DonationCard'
+import { getAllDonations } from '../features/donation/donationSlice'
 
 function Dashboard() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const {user} = useSelector((state) => state.auth)
-  const { donations, isLoading, isError, message } = useSelector((state) => state.donations)
+  const { allDonations, donations, isLoading, isError, message } = useSelector((state) => state.donations)
   
 
   useEffect( () => {
@@ -23,6 +25,7 @@ function Dashboard() {
     }
     if (user) {
       dispatch(getDonations())
+      dispatch(getAllDonations())
     }
 
     return () => {
@@ -49,6 +52,11 @@ function Dashboard() {
           </div>
         ) : (<h3>You have no donation</h3>)}
       </section>
+      <div>
+          {allDonations.map( (donation) => 
+              <DonationCard key={donation._id} donation={donation}/>
+          )}
+      </div>
     </>
   )
 }

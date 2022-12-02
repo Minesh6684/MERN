@@ -13,6 +13,14 @@ const donationSchema = mongoose.Schema({
     description: {
         type: String,
         required: [true, 'Please Describe your donation']
+    },
+    isDonated: {
+        type: Boolean,
+        default: false
+    },
+    isReserved: {
+        type: Boolean,
+        default: false
     }
 },
 {

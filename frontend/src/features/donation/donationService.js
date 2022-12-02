@@ -30,11 +30,17 @@ const deleteDonation = async(donationId, token) => {
     return response.data
 }
 
+const getAllDonations = async() => {
+   const response =  await axios.get('donations/get_all_donations')
+   return response.data
+}
+
 
 const donationService = {
     setDonation, 
     getDonations,
     deleteDonation,
+    getAllDonations
 }
 
 export default donationService
