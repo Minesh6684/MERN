@@ -46,13 +46,18 @@ function Dashboard() {
       <section>
         {donations.length > 0 ? (
           <div>
-            {donations.map((donation) => (
+            <h1>Active Donations</h1>
+            {donations.filter((donation) => !donation.isDonated).map((donation) => (
+              <DonationItem key={donation._id} donation={donation}/>
+            ))}
+            <h1>Donation History</h1>
+            {donations.filter((donation) => donation.isDonated).map((donation) => (
               <DonationItem key={donation._id} donation={donation}/>
             ))}
           </div>
         ) : (<h3>You have no donation</h3>)}
       </section>
-      <div>
+      <div style={{border: '2px solid black'}}>
           {allDonations.map( (donation) => 
               <DonationCard key={donation._id} donation={donation}/>
           )}

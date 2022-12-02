@@ -37,19 +37,21 @@ const updateDonation = asyncHandler(async(req, res) => {
         throw new Error('No Donation Found to update')
     }
 
-    if(!req.user) {
-        res.status(401)
-        throw new Error('User Not Found')
+    // if(!req.user) {
+    //     res.status(401)
+    //     throw new Error('User Not Found')
         
-    }
+    // }
 
-    if(req.user.id !== donation.user.toString()){
-        res.status(401)
-        throw new Error('User not authorized')
-    }
+    // if(req.user.id !== donation.user.toString()){
+    //     res.status(401)
+    //     throw new Error('User not authorized')
+    // }
+    console.log(req.body)
     const updatedDonation = await Donations.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
     })
+    console.log(updatedDonation)
     res.status(200).json(updatedDonation)
 })
 
@@ -80,7 +82,8 @@ const getAllDonations = asyncHandler( async (req, res) => {
         res.status(400)
         throw new Error('No Donations')
     }
-    res.status(200).json(donations)
+    
+    res.status(200).json(donations.filter((donation) => !donation.isDonated))
 })
 
 module.exports = {

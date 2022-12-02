@@ -53,6 +53,16 @@ export const getAllDonations = createAsyncThunk('donations/getAllDonations', asy
     }
 })
 
+export const updateDonation = createAsyncThunk('donations/updateDonation', async(updatedDonation, thunkAPI) => {
+    try {
+        return await donationService.updateDonation(updatedDonation)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message)
+                            || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const donationSlice = createSlice({
     name: 'donation',
     initialState,
@@ -114,6 +124,23 @@ export const donationSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.allDonations = action.payload
+        })
+        .addCase(updateDonation.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(updateDonation.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.donations = state.donations
+                              .map((donation) => donation._id === action.payload._id ? {...donation, isReserved: action.payload.isReserved, reservedFor: action.payload.reservedFor, isDonated: action.payload.isDonated} : donation)
+            state.allDonations = state.allDonations
+                               .map((donation) => donation._id === action.payload._id ? {...donation, isReserved: action.payload.isReserved, reservedFor: action.payload.reservedFor, isDonated: action.payload.isDonated} : donation)
+                               .filter((donation) => donation.isDonated === false)
+        })
+        .addCase(updateDonation.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
         })
     }
 })

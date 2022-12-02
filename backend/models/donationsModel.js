@@ -21,6 +21,9 @@ const donationSchema = mongoose.Schema({
     isReserved: {
         type: Boolean,
         default: false
+    },
+    reservedFor: {
+        type: String,
     }
 },
 {

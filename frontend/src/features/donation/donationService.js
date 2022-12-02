@@ -35,12 +35,17 @@ const getAllDonations = async() => {
    return response.data
 }
 
+const updateDonation = async(updatedDonation) => {
+    const response = await axios.put(`/donations/` + updatedDonation._id, updatedDonation)
+    return response.data
+}
 
 const donationService = {
     setDonation, 
     getDonations,
     deleteDonation,
-    getAllDonations
+    getAllDonations,
+    updateDonation
 }
 
 export default donationService
