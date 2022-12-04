@@ -9,6 +9,7 @@ import { register, reset } from '../features/auth/authSlice'
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box'
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -61,71 +62,115 @@ function Register() {
         email,
         password
       }
-
+      console.log(userData)
       dispatch(register(userData))
     }
   }
 
   return (
-    <>
-      <section>
+    <Box
+      sx={{ width: 500,
+            height: 530,
+            backgroundColor: 'whitesmoke',
+            border: '1px solid grey',
+            borderRadius: '5px',
+            margin: '20px auto',
+            padding: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
+    >
+      <Box>
         <h1>
           <FaUser /> Register
         </h1>
         <p>Please Create an Account</p>
-      </section>
+      </Box>
 
-      <section>
-        <form onSubmit={onSubmit}>
-          <div>
-            <TextField
-              id="standard-helperText"
-              label="Name"
-              name='name' value={name} onChange={onChange}
-              variant="standard"
-            />
-          </div>
-          <div>
-            <TextField
-              id="standard-helperText"
-              label="Phone Number"
-              name='phone' value={phone} onChange={onChange}
-              variant="standard"
-            />
-          </div>
-          <div>
-            <TextField
-              id="standard-helperText"
-              label="E-mail"
-              type="email"
-              name='email' value={email} onChange={onChange}
-              variant="standard"
-            />
-          </div>
-          <div>
-            <TextField
-              id="standard-helperText"
-              label="Password"
-              type="password"
-              name='password' value={password} onChange={onChange}
-              variant="standard"
-            />
-          </div>
-          <div>
-            <TextField
-              id="standard-helperText"
-              label="Confirm Password"
-              type="password"
-              name='password2' value={password2} onChange={onChange}
-              variant="standard"
-            />
-          </div>
-          <div>
-            <Button variant="contained" type='submit'>Register</Button>            
-          </div>
-        </form>
-      </section>
-    </>
+      
+      <Box onSubmit={onSubmit} component="form" >
+        <div>
+          <TextField
+            color='warning'
+            label="Name"
+            name='name' value={name} onChange={onChange}
+            variant="standard"
+            sx={{
+              width: 300,
+              margin: '10px auto'
+            }}
+            required
+          />
+        </div>
+        <div>
+          <TextField
+            color='warning'
+            label="Phone Number"
+            name='phone' value={phone} onChange={onChange}
+            variant="standard"
+            sx={{
+              width: 300,
+              margin: '10px auto'
+            }}
+            required
+          />
+        </div>
+        <div>
+          <TextField
+            color='warning'
+            label="E-mail"
+            type="email"
+            name='email' value={email} onChange={onChange}
+            variant="standard"
+            sx={{
+              width: 300,
+              margin: '10px auto'
+            }}
+            required
+          />
+        </div>
+        <div>
+          <TextField
+            color='warning'
+            label="Password"
+            type="password"
+            name='password' value={password} onChange={onChange}
+            variant="standard"
+            sx={{
+              width: 300,
+              margin: '10px auto'
+            }}
+            required
+          />
+        </div>
+        <div>
+          <TextField
+            color='warning'
+            label="Confirm Password"
+            type="password"
+            name='password2' value={password2} onChange={onChange}
+            variant="standard"
+            sx={{
+              width: 300,
+              margin: '10px auto'
+            }}
+            required
+          />
+        </div>
+        <div>
+          <Button 
+            variant="outlined" type='submit'
+            sx={{
+              width: '50%',
+              margin: '20px auto'
+            }}
+          >
+            Register
+          </Button>            
+        </div>
+      </Box>
+    </Box>
   )
 }
 

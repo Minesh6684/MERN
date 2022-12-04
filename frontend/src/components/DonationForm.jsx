@@ -7,6 +7,8 @@ import { toast } from 'react-toastify'
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Typography, Box } from '@mui/material';
+
 
 function DonationForm() {
     const [formData, setFormData] = useState({
@@ -43,14 +45,25 @@ function DonationForm() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <p>Want to Donate?</p>
+        <Box 
+            onSubmit={onSubmit} 
+            component='form'
+            // sx={{
+            //     border: '1px solid grey',
+            // }}
+        >
+            <Typography>Want to Donate?</Typography>
             <div>
                 <TextField
                     id="standard-helperText"
                     label="Address"
                     name='address' value={address} onChange={onChange}
                     variant="standard"
+                    sx={{
+                        width: 200,
+                        margin: '10px auto'
+                    }}
+                    required
                 />
             </div>
             <div>
@@ -59,12 +72,20 @@ function DonationForm() {
                     label="Describe the Meal"
                     name='description' value={description} onChange={onChange}
                     variant="standard"
+                    sx={{
+                        width: 200,
+                        margin: '10px auto'
+                    }}
+                    required
                 />
             </div>
             <div>
-                <Button variant="contained" type='submit'>Donate</Button>
+                <Button variant="outlined" color='secondary' type='submit' sx={{
+                        width: 200,
+                        margin: '10px auto'
+                    }}>Donate</Button>
             </div>
-        </form>
+        </Box>
     )
 }
 

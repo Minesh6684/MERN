@@ -10,6 +10,7 @@ import { login, reset } from '../features/auth/authSlice'
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box'
 
 function Login () {
 
@@ -58,38 +59,67 @@ function Login () {
     }
 
     return (
-        <>
-            <section>
+        <Box
+            sx={{ width: 500,
+                height: 530,
+                backgroundColor: 'whitesmoke',
+                border: '1px solid grey',
+                borderRadius: '5px',
+                margin: '20px auto',
+                padding: '20px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+            }}
+        >
+            <Box>
                 <h1>
                     <FaSignInAlt/> Login
                 </h1>
                 <p>Login and Donate</p>
-            </section>
+            </Box>
 
-            <section>
-                <form onSubmit={onSubmit}>
-                    <div>
-                        <TextField
-                            id="standard-helperText"
-                            label="Email"
-                            type='email'  name='email' value={email} onChange={onChange}
-                            variant="standard"
-                        />
-                    </div>
-                    <div>
-                        <TextField
-                            id="standard-helperText"
-                            label="Password"
-                            type='password'  name='password' value={password} onChange={onChange}
-                            variant="standard"
-                        />    
-                    </div>
-                    <div>
-                        <Button variant="contained" type='submit'>Login</Button>
-                    </div>
-                </form>
-            </section>
-        </>        
+            <Box 
+            component="form" 
+            onSubmit={onSubmit}
+            >
+                <div>
+                    <TextField
+                        color='warning'
+                        label="Email"
+                        type='email'  name='email' value={email} onChange={onChange}
+                        variant="standard"
+                        sx={{
+                            width: 300,
+                            margin: '10px auto'
+                        }}
+                    />
+                </div>
+                <div>
+                    <TextField
+                        color='warning'
+                        label="Password"
+                        type='password'  name='password' value={password} onChange={onChange}
+                        variant="standard"
+                        sx={{
+                            width: 300,
+                            margin: '10px auto'
+                        }}
+                    />    
+                </div>
+                <div>
+                    <Button 
+                        variant="outlined" type='submit' color='primary'
+                        sx={{
+                            width: '50%',
+                            margin: '20px auto'
+                          }}
+                    >
+                        Login
+                    </Button>
+                </div>
+            </Box>
+        </Box>        
     )
 }
 

@@ -4,6 +4,7 @@ const REGISTER_URI = '/users/register'
 const LOGIN_URI = '/users/login'
 
 const register = async(userData) => {
+    console.log(userData)
     const response = await axios.post(REGISTER_URI, userData)
 
     if (response.data) {

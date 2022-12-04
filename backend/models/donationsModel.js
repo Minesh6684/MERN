@@ -6,6 +6,14 @@ const donationSchema = mongoose.Schema({
         require: true,
         ref: 'Users',
     },
+    name: {
+        type: String,
+        required: [true, "Please add Doner's name"]
+    },
+    phone: {
+        type: String,
+        required: [true, "Please add Doner's Phonr number"]
+    },
     address: {
         type: String,
         required: [true, 'Please add Address']

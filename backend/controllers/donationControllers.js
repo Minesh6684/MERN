@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const Donations = require('../models/donationsModel')
+const Users = require('../models/userModel')
 
 const getDonations = asyncHandler(async(req, res) => {
     const donations = await Donations.find({user: req.user._id})
@@ -23,6 +24,8 @@ const postDonation = asyncHandler(async(req, res) => {
     }
     const donation = await Donations.create({
         user: req.user.id,
+        name: req.user.name,
+        phone: req.user.phone,
         address,
         description,
     })
@@ -82,6 +85,18 @@ const getAllDonations = asyncHandler( async (req, res) => {
         res.status(400)
         throw new Error('No Donations')
     }
+
+    // const getUserDetails = async(donation) => {
+    //     const user = await Users.findById(donation.user.toString())
+    //     // console.log(donation)
+    //     donation.userName = user.name
+    //     donation.phone = user.phone
+    // }
+
+    // const allDonations = donations.filter((donation) => !donation.isDonated)
+    // .map(async (donation) => {return await getUserDetails(donation)})
+
+    // console.log(allDonations)
     
     res.status(200).json(donations.filter((donation) => !donation.isDonated))
 })

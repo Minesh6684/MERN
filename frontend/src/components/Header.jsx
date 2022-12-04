@@ -23,25 +23,29 @@ function Header () {
         navigate('/')
     }
 
+    const linkStyle = {
+      margin: "1rem",
+      textDecoration: "none",
+      color: 'white'
+    };
+
     return (
-        <header>
-            <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            FeedEveryone
-                        </Typography>
-                        {user 
-                        ? (<Button color="inherit" onClick={LogOut}><FaSignOutAlt /> Logout</Button>)
-                        : (
-                        <>
-                            <Button color="inherit"><Link to='/register'> <FaUser/> Register</Link></Button>
-                            <Button color="inherit"><Link to='/login'> <FaSignInAlt/> Login</Link></Button>
-                        </>)}
-                    </Toolbar>
-                </AppBar>
-            </Box>
-        </header>
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        FeedEveryone
+                    </Typography>
+                    {user 
+                    ? (<Button color="inherit" onClick={LogOut}><FaSignOutAlt /> Logout</Button>)
+                    : (
+                    <>
+                        <Button color="inherit"><Link to='/register' style={linkStyle}> <FaUser/> Register</Link></Button>
+                        <Button color="inherit"><Link to='/login' style={linkStyle}> <FaSignInAlt/> Login</Link></Button>
+                    </>)}
+                </Toolbar>
+            </AppBar>
+        </Box>
     )
 }
 
