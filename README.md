@@ -91,7 +91,7 @@
     - To overcome difficulties of props management
     - Redux uses single store of an application state, that can be used anywhere in an application without traversing it from parent to child element
 
-# ```FOLLOW THE STEP TO RUN THE APP ON LOCALHOST```
+# ```FOLLOW THE STEP TO RUN THE APP ON LOCALHOST AFTER DOWNLOADING THE SOURCE CODE```
 - ```npm i```
 - ```cd frontend```
 - ```npm i```
