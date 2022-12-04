@@ -5,6 +5,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { login, reset } from '../features/auth/authSlice'
 
+
+// MATERIAL UI
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 function Login () {
 
     const [formData, setFormData] = useState({
@@ -62,9 +68,25 @@ function Login () {
 
             <section>
                 <form onSubmit={onSubmit}>
-                    <input type='email' placeholder='Email' name='email' value={email} onChange={onChange} required/>
-                    <input type='password' placeholder='Password' name='password' value={password} onChange={onChange} required/>
-                    <input type='submit' value='Login'/>
+                    <div>
+                        <TextField
+                            id="standard-helperText"
+                            label="Email"
+                            type='email'  name='email' value={email} onChange={onChange}
+                            variant="standard"
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            id="standard-helperText"
+                            label="Password"
+                            type='password'  name='password' value={password} onChange={onChange}
+                            variant="standard"
+                        />    
+                    </div>
+                    <div>
+                        <Button variant="contained" type='submit'>Login</Button>
+                    </div>
                 </form>
             </section>
         </>        

@@ -58,8 +58,8 @@ function Dashboard() {
         ) : (<h3>You have no donation</h3>)}
       </section>
       <div style={{border: '2px solid black'}}>
-          {allDonations.map( (donation) => 
-              <DonationCard key={donation._id} donation={donation}/>
+          {allDonations.map((donation) => 
+            <DonationCard key={donation._id} donation={donation}/>
           )}
       </div>
     </>

@@ -3,6 +3,14 @@ import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import {updateDonation} from '../features/donation/donationSlice'
 
+// DONATION CARD
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 function DonationCard({donation}) {
     
     const dispatch = useDispatch()
@@ -21,22 +29,36 @@ function DonationCard({donation}) {
     }
 
     return(
-        <div>
-            <p>{donation.description} <BsDashLg color={!donation.isDonated ? !donation.isReserved ? 'green' : 'orange' : 'red'} /></p>
-            <p>{donation.address}</p>
-            {donation.isReserved ? (
-                <>
-                    Reserved For: <p>{donation.reservedFor}</p>
-                </>
-            ) 
-            : (
-            <form onSubmit={reserveDonation}>
-                Reserve For: <input type='text' value={reservedFor} onChange={(e) => setReservedFor(e.target.value)}/>
-                <input type='submit' value='Reserve'/>
-            </form>
-            )}
-            
-        </div>
+        <Card sx={{ maxWidth: 345 }}>
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    {donation.address}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {donation.description}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {donation.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {donation.phone}
+                </Typography>
+            </CardContent>
+        <CardActions>
+          <BsDashLg color={!donation.isDonated ? !donation.isReserved ? 'green' : 'orange' : 'red'} /> 
+          {donation.isReserved ? (
+              <>
+                  <p>Reserved For: {donation.reservedFor}</p>
+              </>
+          ) 
+          : (
+          <form onSubmit={reserveDonation}>
+              Reserve For: <input type='text' value={reservedFor} onChange={(e) => setReservedFor(e.target.value)} required/>
+              <Button variant='contained' type='submit'>Reserve</Button>
+          </form>
+          )}
+        </CardActions>
+      </Card>
     )
 }
 

@@ -5,6 +5,11 @@ import { toast } from 'react-toastify'
 import { FaUser } from 'react-icons/fa'
 import { register, reset } from '../features/auth/authSlice'
 
+// MATERIAL UI
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 function Register() {
   const [formData, setFormData] = useState({
     name: '',
@@ -72,12 +77,52 @@ function Register() {
 
       <section>
         <form onSubmit={onSubmit}>
-          <input type='text' placeholder='Name' name='name' value={name} onChange={onChange}/>
-          <input type='text' placeholder='Phone Number' name='phone' value={phone} onChange={onChange}/>
-          <input type='email' placeholder='Email' name='email' value={email} onChange={onChange}/>
-          <input type='password' placeholder='Password' name='password' value={password} onChange={onChange}/>
-          <input type='password' placeholder='Confirm Password' name='password2' value={password2} onChange={onChange}/>
-          <input type='submit' value='Register'/>
+          <div>
+            <TextField
+              id="standard-helperText"
+              label="Name"
+              name='name' value={name} onChange={onChange}
+              variant="standard"
+            />
+          </div>
+          <div>
+            <TextField
+              id="standard-helperText"
+              label="Phone Number"
+              name='phone' value={phone} onChange={onChange}
+              variant="standard"
+            />
+          </div>
+          <div>
+            <TextField
+              id="standard-helperText"
+              label="E-mail"
+              type="email"
+              name='email' value={email} onChange={onChange}
+              variant="standard"
+            />
+          </div>
+          <div>
+            <TextField
+              id="standard-helperText"
+              label="Password"
+              type="password"
+              name='password' value={password} onChange={onChange}
+              variant="standard"
+            />
+          </div>
+          <div>
+            <TextField
+              id="standard-helperText"
+              label="Confirm Password"
+              type="password"
+              name='password2' value={password2} onChange={onChange}
+              variant="standard"
+            />
+          </div>
+          <div>
+            <Button variant="contained" type='submit'>Register</Button>            
+          </div>
         </form>
       </section>
     </>
