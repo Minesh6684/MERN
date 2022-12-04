@@ -72,11 +72,24 @@
     ## User Endpoints
 
     - ```/users/register/```
-        - Method: PUT - Finds and Update the existing donation if any changes occurs
-        - Method: DELETE - Deletes the donation using its ID
+        - Method: POST - The controller attached to hte endpoint check for the user, if the user does not exists, it stores the data sent to the backend to the database
 
     - ```/users/login/```
-        - Method: PUT - Finds and Update the existing donation if any changes occurs
-        - Method: DELETE - Deletes the donation using its ID
+        - Method: POST - The associated controller check for the user credentials, authenticate it and if it is authorized it sends the user data to to frontend from the database.
+
+## ```TOOLS```
+
+-  ```axios``` 
+    - http client library
+    - To send and get data from the backend to frontend
+
+-  ```concurrently``` 
+    - ```npm i concurrently```
+    - To run backend and frontend concurrently
+
+- ```Redux template```
+    - To overcome difficulties of props management
+    - Redux uses single store of an application state, that can be used anywhere in an application without traversing it from parent to child element
+
 
 
