@@ -7,10 +7,11 @@ import { toast } from 'react-toastify'
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Typography, Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 
 function DonationForm() {
+
     const [formData, setFormData] = useState({
         address: '',
         description: '',
@@ -48,39 +49,53 @@ function DonationForm() {
         <Box 
             onSubmit={onSubmit} 
             component='form'
-            // sx={{
-            //     border: '1px solid grey',
-            // }}
-        >
+        >   
+
             <Typography>Want to Donate?</Typography>
             <div>
                 <TextField
+                    color='warning'
                     id="standard-helperText"
                     label="Address"
+                    InputLabelProps={{
+                        style: { color: '#fff' },
+                    }}
                     name='address' value={address} onChange={onChange}
                     variant="standard"
                     sx={{
                         width: 200,
-                        margin: '10px auto'
+                        margin: '10px auto',
+                        input: {
+                            color: "#ed6c02",
+                            borderBottom: "1px solid #ffffff",
+                        },
                     }}
                     required
                 />
             </div>
             <div>
                 <TextField
+                    color='warning'
                     id="standard-helperText"
                     label="Describe the Meal"
                     name='description' value={description} onChange={onChange}
                     variant="standard"
+                    InputLabelProps={{
+                        style: { color: '#fff' },
+                    }}
                     sx={{
                         width: 200,
-                        margin: '10px auto'
+                        margin: '10px auto',
+                        input: {
+                            color: "#ed6c02",
+                            borderBottom: "1px solid #ffffff",
+                            },
                     }}
                     required
                 />
             </div>
             <div>
-                <Button variant="outlined" color='secondary' type='submit' sx={{
+                <Button variant="outlined" color='warning' type='submit' sx={{
                         width: 200,
                         margin: '10px auto'
                     }}>Donate</Button>

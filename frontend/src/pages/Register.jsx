@@ -7,9 +7,9 @@ import { register, reset } from '../features/auth/authSlice'
 
 // MATERIAL UI
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box'
+import Box from '@mui/material/Box';
+import { TextField } from '@mui/material'
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -69,19 +69,19 @@ function Register() {
 
   return (
     <Box
-      sx={{ width: 500,
-            height: 530,
-            backgroundColor: 'whitesmoke',
-            border: '1px solid grey',
-            borderRadius: '5px',
-            margin: '20px auto',
-            padding: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}
+      sx={{ 
+          width: 500,
+          height: 530,
+          backgroundColor: 'black',
+          marginLeft: '50%',
+          padding: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          color: 'grey',
+          minHeight: '78vh'
+        }}
     >
-      <Box>
+      <Box sx={{marginTop: '60px'}}>
         <h1>
           <FaUser /> Register
         </h1>
@@ -89,8 +89,8 @@ function Register() {
       </Box>
 
       
-      <Box onSubmit={onSubmit} component="form" >
-        <div>
+      <Box onSubmit={onSubmit} component="form" sx={{marginTop: '20px'}}>
+        <div >
           <TextField
             color='warning'
             label="Name"
@@ -98,9 +98,17 @@ function Register() {
             variant="standard"
             sx={{
               width: 300,
-              margin: '10px auto'
+              margin: '10px auto',
+              color: 'orange',
+              input: {
+                color: "#ed6c02",
+                borderBottom: "1px solid #ffffff",
+              },
+              // borderBottom: '1px solid grey'
             }}
-            required
+            InputLabelProps={{
+              style: { color: '#fff' },
+            }}
           />
         </div>
         <div>
@@ -111,7 +119,16 @@ function Register() {
             variant="standard"
             sx={{
               width: 300,
-              margin: '10px auto'
+              margin: '10px auto',
+              color: 'orange',
+              input: {
+                color: "#ed6c02",
+                borderBottom: "1px solid #ffffff",
+              },
+              // borderBottom: '1px solid grey'
+            }}
+            InputLabelProps={{
+              style: { color: '#fff' },
             }}
             required
           />
@@ -125,7 +142,16 @@ function Register() {
             variant="standard"
             sx={{
               width: 300,
-              margin: '10px auto'
+              margin: '10px auto',
+              color: 'orange',
+              input: {
+                color: "#ed6c02",
+                borderBottom: "1px solid #ffffff",
+              },
+              // borderBottom: '1px solid grey'
+            }}
+            InputLabelProps={{
+              style: { color: '#fff' },
             }}
             required
           />
@@ -139,7 +165,16 @@ function Register() {
             variant="standard"
             sx={{
               width: 300,
-              margin: '10px auto'
+              margin: '10px auto',
+              color: 'orange',
+              input: {
+                color: "#ed6c02",
+                borderBottom: "1px solid #ffffff",
+              },
+              // borderBottom: '1px solid grey'
+            }}
+            InputLabelProps={{
+              style: { color: '#fff' },
             }}
             required
           />
@@ -149,21 +184,30 @@ function Register() {
             color='warning'
             label="Confirm Password"
             type="password"
-            name='password2' value={password2} onChange={onChange}
+            name='password2' value={password2} onChange={onChange} 
             variant="standard"
             sx={{
               width: 300,
-              margin: '10px auto'
+              margin: '10px auto',
+              color: 'orange',
+              input: {
+                color: "#ed6c02",
+                borderBottom: "1px solid #ffffff",
+              },
+              // borderBottom: '1px solid grey'
+            }}
+            InputLabelProps={{
+              style: { color: '#fff' },
             }}
             required
           />
         </div>
         <div>
           <Button 
-            variant="outlined" type='submit'
+            variant="outlined" type='submit' color='warning'
             sx={{
               width: '50%',
-              margin: '20px auto'
+              margin: '30px auto'
             }}
           >
             Register

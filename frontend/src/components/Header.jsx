@@ -26,23 +26,32 @@ function Header () {
     const linkStyle = {
       margin: "1rem",
       textDecoration: "none",
-      color: 'white'
+      color: '#ed6c02'
     };
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" sx={{backgroundColor: 'black'}}>
                 <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1}}  style={linkStyle}>
                         FeedEveryone
                     </Typography>
                     {user 
-                    ? (<Button color="inherit" onClick={LogOut}><FaSignOutAlt /> Logout</Button>)
+                    ? (
+                    <Box>
+                        <Button color="warning" onClick={LogOut}><FaSignOutAlt /> Logout</Button>
+                        <Button><Link to='/active_donations' style={linkStyle}>Active Donations</Link></Button>
+                        <Button><Link to='/completed_donations' style={linkStyle}>History</Link></Button>
+                        <Button><Link to='/all_active_donations' style={linkStyle}>All ActiveDonations</Link></Button>
+                        <Button><Link to='/' style={linkStyle}>Home</Link></Button>
+                    </Box>
+                    )
+
                     : (
-                    <>
-                        <Button color="inherit"><Link to='/register' style={linkStyle}> <FaUser/> Register</Link></Button>
-                        <Button color="inherit"><Link to='/login' style={linkStyle}> <FaSignInAlt/> Login</Link></Button>
-                    </>)}
+                    <Box>
+                        <Button color="warning"><Link to='/register' style={linkStyle}> <FaUser/> Register</Link></Button>
+                        <Button color="warning"><Link to='/login' style={linkStyle}> <FaSignInAlt/> Login</Link></Button>
+                    </Box>)}
                 </Toolbar>
             </AppBar>
         </Box>

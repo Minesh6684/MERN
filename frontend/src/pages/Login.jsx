@@ -8,9 +8,9 @@ import { login, reset } from '../features/auth/authSlice'
 
 // MATERIAL UI
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box'
+import { TextField } from '@mui/material'
 
 function Login () {
 
@@ -62,17 +62,16 @@ function Login () {
         <Box
             sx={{ width: 500,
                 height: 530,
-                backgroundColor: 'whitesmoke',
-                border: '1px solid grey',
-                borderRadius: '5px',
-                margin: '20px auto',
+                backgroundColor: 'black',
+                marginLeft: '50%',
                 padding: '20px',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center'
+                color: 'grey',
+                minHeight: '78vh'
             }}
         >
-            <Box>
+            <Box sx={{marginTop: '80px'}}>
                 <h1>
                     <FaSignInAlt/> Login
                 </h1>
@@ -82,38 +81,57 @@ function Login () {
             <Box 
             component="form" 
             onSubmit={onSubmit}
+            sx={{marginTop: '20px'}}
             >
                 <div>
                     <TextField
-                        color='warning'
-                        label="Email"
-                        type='email'  name='email' value={email} onChange={onChange}
-                        variant="standard"
-                        sx={{
-                            width: 300,
-                            margin: '10px auto'
-                        }}
+                    color='warning'
+                    type='email'  name='email' value={email} onChange={onChange}
+                    label='Email'
+                    variant="standard"
+                    InputLabelProps={{
+                        style: { color: '#fff' },
+                    }}
+                    sx={{
+                        width: 300,
+                        margin: '10px auto',
+                        input: {
+                            color: "#ed6c02",
+                            borderBottom: "1px solid #ffffff",
+                        },
+                    }}
                     />
                 </div>
                 <div>
                     <TextField
-                        color='warning'
-                        label="Password"
-                        type='password'  name='password' value={password} onChange={onChange}
-                        variant="standard"
-                        sx={{
-                            width: 300,
-                            margin: '10px auto'
-                        }}
-                    />    
+                    color='warning'
+                    type='password'
+                    name='password'
+                    label='Password'
+                    value={password} 
+                    onChange={onChange}
+                    variant="standard"
+                    InputLabelProps={{
+                        style: { color: '#fff' },
+                    }}
+                    sx={{
+                        width: 300,
+                        margin: '10px auto',
+                        color: 'orange',
+                        input: {
+                            color: "#ed6c02",
+                            borderBottom: "1px solid #ffffff",
+                            },
+                        // borderBottom: '1px solid grey'
+                    }} />
                 </div>
                 <div>
                     <Button 
-                        variant="outlined" type='submit' color='primary'
+                        variant="outlined" type='submit' color='warning'
                         sx={{
                             width: '50%',
-                            margin: '20px auto'
-                          }}
+                            margin: '30px auto'
+                        }}
                     >
                         Login
                     </Button>

@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    background-image: url('./images/homeless4.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: black;
+}
