@@ -51,6 +51,7 @@ function Dashboard() {
       <Spinner/>
     )
   }
+  
   const Root = styled('div')(({theme}) => ({
     [theme.breakpoints.down('sm')]: {
       width: '90%',
