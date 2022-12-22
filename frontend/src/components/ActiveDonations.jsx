@@ -7,8 +7,9 @@ import DonationItem from '../components/DonationItem'
 
 //Material UI
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Spinner from './Spinner'
+// import Box from '@mui/material/Box';
+import Spinner from './Spinner';
+import { styled } from '@mui/material/styles'
 
 
 function ActiveDonations() {
@@ -42,19 +43,34 @@ function ActiveDonations() {
         <Spinner/>
       )
     }
+  
+    const Root = styled('div')(({theme}) => ({
+      [theme.breakpoints.down('sm')]: {
+        width: '90%',
+        margin: '0 auto'
+      },
+      [theme.breakpoints.up('sm')]: {
+        width: '60%',
+        margin: '0 auto'
+          
+      },
+      [theme.breakpoints.up('md')]: {
+        width: '50%',
+        marginLeft: '50%'
+      },
+    }))
 
   return (
-    <Box item xs={6} spacing={2} sx={{
+    <Root item xs={6} spacing={2} sx={{
       minHeight: '78vh',
       maxHeight: '78vh',
       overflow: 'scroll',
-      marginLeft: '50%' 
     }}>
       <h1>Active Donations</h1>
       {activeDonations.map((donation) => (
       <DonationItem key={donation._id} donation={donation}/>
       ))}
-    </Box>
+    </Root>
   )
 }
 

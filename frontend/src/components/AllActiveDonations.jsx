@@ -8,7 +8,7 @@ import Spinner from './Spinner'
 
 
 // Material UI
-import { Box } from '@mui/system'
+import { styled } from '@mui/material/styles'
 
 function AllActiveDonations() {
     const navigate = useNavigate()
@@ -39,8 +39,24 @@ function AllActiveDonations() {
           <Spinner/>
         )
       }
+
+    const Root = styled('div')(({theme}) => ({
+      [theme.breakpoints.down('sm')]: {
+        width: '90%',
+        margin: '0 auto'
+      },
+      [theme.breakpoints.up('sm')]: {
+        width: '60%',
+        margin: '0 auto'
+          
+      },
+      [theme.breakpoints.up('md')]: {
+        width: '50%',
+        marginLeft: '50%'
+      },
+    }))
     return (
-    <Box item xs={6} spacing={2} sx={{
+    <Root item xs={6} spacing={2} sx={{
       minHeight: '78vh',
       maxHeight: '78vh',
       overflow: 'scroll',
@@ -50,7 +66,7 @@ function AllActiveDonations() {
           {allDonations.map((donation) => 
             <DonationCard key={donation._id} donation={donation}/>
         )}
-    </Box>
+    </Root>
   )
 }
 

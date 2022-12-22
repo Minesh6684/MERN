@@ -8,7 +8,7 @@ import Spinner from '../components/Spinner'
 //Material UI
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
@@ -51,14 +51,25 @@ function Dashboard() {
       <Spinner/>
     )
   }
-
+  const Root = styled('div')(({theme}) => ({
+    [theme.breakpoints.down('sm')]: {
+      width: '90%',
+      margin: '0 auto'
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '60%',
+      margin: '0 auto'
+        
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '50%',
+      marginLeft: '50%'
+    },
+  }))
 
   return (
-    <Box sx={{ flexGrow: 1,
-      width: 500,
-      height: 530,
+    <Root sx={{ flexGrow: 1,
       backgroundColor: 'black',
-      marginLeft: '50%',
       padding: '20px',
       display: 'flex',
       flexDirection: 'column',
@@ -72,7 +83,7 @@ function Dashboard() {
           </Item>
         </Grid>
       </Grid>
-    </Box>
+    </Root>
   )
 }
 

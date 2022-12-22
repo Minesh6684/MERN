@@ -1,12 +1,30 @@
 import ClipLoader from "react-spinners/ClipLoader";
+import { styled } from '@mui/material/styles'
 
 function Spinner() {
     let color = 'orange'
     let loading = true
+
+    const Root = styled('div')(({theme}) => ({
+      [theme.breakpoints.down('sm')]: {
+        width: '90%',
+        margin: '0 auto'
+      },
+      [theme.breakpoints.up('sm')]: {
+        width: '60%',
+        margin: '0 auto'
+          
+      },
+      [theme.breakpoints.up('md')]: {
+        width: '50%',
+        marginLeft: '50%'
+      },
+    }))
+  
+
     return (
-      <div className="sweet-loading" style={{width: 500,
+      <Root className="sweet-loading" style={{width: 500,
       height: 530,
-      marginLeft: '50%',
       padding: '20px',
       display: 'flex',
       flexDirection: 'column',
@@ -21,7 +39,7 @@ function Spinner() {
           aria-label="Loading Spinner"
           data-testid="loader"
         />
-      </div>
+      </Root>
     );
 }
 

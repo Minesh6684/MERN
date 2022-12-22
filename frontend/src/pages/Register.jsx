@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FaUser } from 'react-icons/fa'
 import { register, reset } from '../features/auth/authSlice'
+import { styled } from '@mui/material/styles'
 
 // MATERIAL UI
 import * as React from 'react';
@@ -67,13 +68,24 @@ function Register() {
     }
   }
 
+  const Root = styled('div')(({ theme }) => ({
+    padding: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+    },
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: '50%',
+        width: 300
+    },
+    [theme.breakpoints.up('lg')]: {
+    },
+  }));
+
   return (
+    <Root>
     <Box
-      sx={{ 
-          width: 500,
-          height: 530,
+      sx={{
+          width: '100%',
           backgroundColor: 'black',
-          marginLeft: '50%',
           padding: '20px',
           display: 'flex',
           flexDirection: 'column',
@@ -81,7 +93,7 @@ function Register() {
           minHeight: '78vh'
         }}
     >
-      <Box sx={{marginTop: '60px'}}>
+      <Box>
         <h1>
           <FaUser /> Register
         </h1>
@@ -97,7 +109,7 @@ function Register() {
             name='name' value={name} onChange={onChange}
             variant="standard"
             sx={{
-              width: 300,
+              width: '100%',
               margin: '10px auto',
               color: 'orange',
               input: {
@@ -118,7 +130,7 @@ function Register() {
             name='phone' value={phone} onChange={onChange}
             variant="standard"
             sx={{
-              width: 300,
+              width: '100%',
               margin: '10px auto',
               color: 'orange',
               input: {
@@ -141,7 +153,7 @@ function Register() {
             name='email' value={email} onChange={onChange}
             variant="standard"
             sx={{
-              width: 300,
+              width: '100%',
               margin: '10px auto',
               color: 'orange',
               input: {
@@ -164,7 +176,7 @@ function Register() {
             name='password' value={password} onChange={onChange}
             variant="standard"
             sx={{
-              width: 300,
+              width: '100%',
               margin: '10px auto',
               color: 'orange',
               input: {
@@ -187,7 +199,7 @@ function Register() {
             name='password2' value={password2} onChange={onChange} 
             variant="standard"
             sx={{
-              width: 300,
+              width: '100%',
               margin: '10px auto',
               color: 'orange',
               input: {
@@ -215,6 +227,7 @@ function Register() {
         </div>
       </Box>
     </Box>
+    </Root>
   )
 }
 
