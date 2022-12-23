@@ -1,27 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import {useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FaUser } from 'react-icons/fa'
-import { register, reset } from '../features/auth/authSlice'
+import { reset } from '../features/auth/authSlice'
 import { styled } from '@mui/material/styles'
+import RegisterForm from '../components/RegisterForm'
 
 // MATERIAL UI
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { TextField } from '@mui/material'
 
 function Register() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    password: '',
-    password2: ''
-  })
-
-  const { name, phone, email, password, password2 } = formData
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -43,30 +33,6 @@ function Register() {
   if(isLoading) {
     return <h1>Loading</h1>
   }
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value
-    })
-    )
-  }
-
-  const onSubmit = (e) => {
-    e.preventDefault()
-
-    if (password !== password2) {
-      toast.error('Password do not match')
-    } else {
-      const userData = {
-        name,
-        phone,
-        email,
-        password
-      }
-      console.log(userData)
-      dispatch(register(userData))
-    }
-  }
 
   const Root = styled('div')(({ theme }) => ({
     padding: theme.spacing(1),
@@ -81,8 +47,7 @@ function Register() {
   }));
 
   return (
-    <Root>
-    <Box
+    <Root
       sx={{
           width: '100%',
           backgroundColor: 'black',
@@ -100,134 +65,9 @@ function Register() {
         <p>Please Create an Account</p>
       </Box>
 
-      
-      <Box onSubmit={onSubmit} component="form" sx={{marginTop: '20px'}}>
-        <div >
-          <TextField
-            color='warning'
-            label="Name"
-            name='name' value={name} onChange={onChange}
-            variant="standard"
-            sx={{
-              width: '100%',
-              margin: '10px auto',
-              color: 'orange',
-              input: {
-                color: "#ed6c02",
-                borderBottom: "1px solid #ffffff",
-              },
-              // borderBottom: '1px solid grey'
-            }}
-            InputLabelProps={{
-              style: { color: '#fff' },
-            }}
-          />
-        </div>
-        <div>
-          <TextField
-            color='warning'
-            label="Phone Number"
-            name='phone' value={phone} onChange={onChange}
-            variant="standard"
-            sx={{
-              width: '100%',
-              margin: '10px auto',
-              color: 'orange',
-              input: {
-                color: "#ed6c02",
-                borderBottom: "1px solid #ffffff",
-              },
-              // borderBottom: '1px solid grey'
-            }}
-            InputLabelProps={{
-              style: { color: '#fff' },
-            }}
-            required
-          />
-        </div>
-        <div>
-          <TextField
-            color='warning'
-            label="E-mail"
-            type="email"
-            name='email' value={email} onChange={onChange}
-            variant="standard"
-            sx={{
-              width: '100%',
-              margin: '10px auto',
-              color: 'orange',
-              input: {
-                color: "#ed6c02",
-                borderBottom: "1px solid #ffffff",
-              },
-              // borderBottom: '1px solid grey'
-            }}
-            InputLabelProps={{
-              style: { color: '#fff' },
-            }}
-            required
-          />
-        </div>
-        <div>
-          <TextField
-            color='warning'
-            label="Password"
-            type="password"
-            name='password' value={password} onChange={onChange}
-            variant="standard"
-            sx={{
-              width: '100%',
-              margin: '10px auto',
-              color: 'orange',
-              input: {
-                color: "#ed6c02",
-                borderBottom: "1px solid #ffffff",
-              },
-              // borderBottom: '1px solid grey'
-            }}
-            InputLabelProps={{
-              style: { color: '#fff' },
-            }}
-            required
-          />
-        </div>
-        <div>
-          <TextField
-            color='warning'
-            label="Confirm Password"
-            type="password"
-            name='password2' value={password2} onChange={onChange} 
-            variant="standard"
-            sx={{
-              width: '100%',
-              margin: '10px auto',
-              color: 'orange',
-              input: {
-                color: "#ed6c02",
-                borderBottom: "1px solid #ffffff",
-              },
-              // borderBottom: '1px solid grey'
-            }}
-            InputLabelProps={{
-              style: { color: '#fff' },
-            }}
-            required
-          />
-        </div>
-        <div>
-          <Button 
-            variant="outlined" type='submit' color='warning'
-            sx={{
-              width: '50%',
-              margin: '30px auto'
-            }}
-          >
-            Register
-          </Button>            
-        </div>
-      </Box>
-    </Box>
+      <RegisterForm/>
     </Root>
+    
   )
 }
 
