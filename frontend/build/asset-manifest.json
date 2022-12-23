@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.9a25e63d.css",
-    "main.js": "/static/js/main.f9d3ac06.js",
+    "main.js": "/static/js/main.f6207eb5.js",
     "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
     "static/media/homeless4.jpg": "/static/media/homeless4.03975c53ec442b4691c0.jpg",
     "index.html": "/index.html",
     "main.9a25e63d.css.map": "/static/css/main.9a25e63d.css.map",
-    "main.f9d3ac06.js.map": "/static/js/main.f9d3ac06.js.map",
+    "main.f6207eb5.js.map": "/static/js/main.f6207eb5.js.map",
     "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9a25e63d.css",
-    "static/js/main.f9d3ac06.js"
+    "static/js/main.f6207eb5.js"
   ]
 }
