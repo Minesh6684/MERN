@@ -58,7 +58,7 @@ function Header () {
             </Typography>
             {user 
             ? (
-            <Box>
+            <Box sx={{margin: '1rem'}}>
                 <Box sx={{display: {xs: 'inline', sm: 'inline', md: 'none' }}}>
                     <GiHamburgerMenu style={linkStyle} onClick={()=>setHam(!ham)}/>
                     {ham && <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center', border: '1px solid #ed6c02', borderRadius: '5px', position: 'absolute', right: '20px', backgroundColor: 'black', zIndex: 3}}>
@@ -77,7 +77,7 @@ function Header () {
             </Box>
             )
             : (
-            <Box>
+            <Box sx={{margin: '1rem'}}>
                 <Box sx={{display: {xs: 'inline', sm: 'none', md: 'none' }}}>
                     <GiHamburgerMenu style={linkStyle} onClick={()=>setHam(!ham)}/>
                     {ham && <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center', border: '1px solid #ed6c02', borderRadius: '5px', position: 'absolute', right: '20px', backgroundColor: 'black'}}>

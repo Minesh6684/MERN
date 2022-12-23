@@ -74,7 +74,7 @@ function Dashboard() {
       padding: '20px',
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '78vh'
+      minHeight: '76vh'
     }}>
       <Grid container spacing={2}>
         <Grid item xs={12} sx={{marginTop: '100px'}}>

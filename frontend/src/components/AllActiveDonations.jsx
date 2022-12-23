@@ -57,8 +57,8 @@ function AllActiveDonations() {
     }))
     return (
     <Root item xs={6} spacing={2} sx={{
-      minHeight: '78vh',
-      maxHeight: '78vh',
+      minHeight: '76vh',
+      maxHeight: '76vh',
       overflow: 'scroll',
       marginLeft: '50%'  
     }}>

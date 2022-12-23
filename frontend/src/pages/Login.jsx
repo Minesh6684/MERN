@@ -61,7 +61,7 @@ function Login () {
                 display: 'flex',
                 flexDirection: 'column',
                 color: 'grey',
-                minHeight: '78vh'
+                minHeight: '76vh'
             }}
         >
             <Box sx={{marginTop: '80px'}}>
