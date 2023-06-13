@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 import ActiveDonations from './components/ActiveDonations';
 import CompleteDonations from './components/CompleteDonations';
 import AllActiveDonations from './components/AllActiveDonations';
+import ForgotPasswordForm from './components/ForgotPasswordForm';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path='/register' element={<Register/>} />
             <Route path='/login' element={<Login/>} />
+            <Route path='/forget-pass' element={<ForgotPasswordForm/>} />
             <Route path='/' element={<Dashboard/>} />
             <Route path='/active_donations' element={<ActiveDonations/>} />
             <Route path='/completed_donations' element={<CompleteDonations/>} />

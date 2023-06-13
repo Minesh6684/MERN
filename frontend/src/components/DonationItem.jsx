@@ -46,46 +46,7 @@ function DonationItem({donation}) {
                 </CardActions>
             </Box>
         </Card>
-        // <Box sx={{border: '1px solid grey', marginBottom: 2}}>
-        //     <p>{donation.address}</p>
-        //     <p>{donation.description}</p>
-        //     { !donation.isReserved 
-        //     ? <AiFillDelete onClick={()=> dispatch(deleteDonation(donation._id))}/>  
-        //     : !donation.isDonated 
-        //     ?         
-        //     <>
-        //         <p>Reserved for: {donation.reservedFor}</p><Button variant="contained" onClick={donated}>Mark As Donated</Button>
-        //     </>
-        //     : <p>donated to: {donation.reservedFor}</p>}
-        // </Box>
     )
 }
 
 export default DonationItem
-
-/*
-
-        <Card sx={{padding: '20px', maxWidth: 450, marginBottom: 2, border: `1px solid ${!donation.isDonated ? !donation.isReserved ? 'green' : 'orange' : 'red'}`, backgroundColor: 'transparent', color: 'White' }}>
-            <Typography gutterBottom variant="h5" component="div">
-                    <FcHome/> {donation.address}
-            </Typography>
-            <Box sx={{display: 'flex', flexDirection: 'row'}}>
-                <CardContent sx={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start'}}> 
-                    <Typography sx={{marginTop: '12px', minWidth: '150px'}}>
-                        <GiMeal/> {donation.description}
-                    </Typography>
-                </CardContent>
-                <CardActions sx={{ display: 'flex', flexDirection: 'column'}}>
-                    { !donation.isReserved 
-                    ? <AiFillDelete onClick={()=> dispatch(deleteDonation(donation._id))}/>  
-                    : !donation.isDonated 
-                    ?         
-                    <>
-                        <p>Reserved for: {donation.reservedFor}</p><Button variant="contained" onClick={donated}>Mark As Donated</Button>
-                    </>
-                    : <p>donated to: {donation.reservedFor}</p>}
-                </CardActions>
-            </Box>
-        </Card>
-
-*/

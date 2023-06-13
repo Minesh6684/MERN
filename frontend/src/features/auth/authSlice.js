@@ -8,7 +8,8 @@ const initialState = {
     isLoading: false,
     isError: false,
     isSuccess: false,
-    message: ''
+    message: '',
+    passwordReset: ''
 }
 
 //REGISTER USER
@@ -35,6 +36,17 @@ export const login = createAsyncThunk('auth/login', async(userData, thunkAPI) =>
         return thunkAPI.rejectWithValue(message)
     }
 })
+
+export const sendPasswordResetLink = createAsyncThunk('auth/reset-pass', async(userData, thunkAPI) => {
+    try {
+        return await authService.sendPasswordResetLink(userData)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message)
+                            || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -79,6 +91,19 @@ export const authSlice = createSlice({
             state.isError = true
             state.message = action.payload
             state.user = null
+        })
+        .addCase(sendPasswordResetLink.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(sendPasswordResetLink.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+            state.user = null
+        })
+        .addCase(sendPasswordResetLink.fulfilled, (state, action) => {
+            state.isSuccess = true
+            state.passwordReset = action.payload
         })
     }
 })

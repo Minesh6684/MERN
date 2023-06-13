@@ -1,6 +1,5 @@
 const errorHandler = async (err, req, res, next) => {
     const statusCode = await res.statusCode ? res.statusCode : 500
-    console.log(statusCode)
     res.status(statusCode)
     res.json({
         message: err.message,

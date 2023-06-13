@@ -2,9 +2,9 @@ import axios from 'axios'
 
 const REGISTER_URI = '/users/register'
 const LOGIN_URI = '/users/login'
+const FPL = '/users/forget-pass'
 
 const register = async(userData) => {
-    console.log(userData)
     const response = await axios.post(REGISTER_URI, userData)
 
     if (response.data) {
@@ -28,8 +28,13 @@ const login = async(userData) => {
     return response.data
 }
 
+const sendPasswordResetLink = async(email) => {
+    const response = await axios.post(FPL, email)
+    return response.data
+}
+
 const authService = {
-    register, logout, login
+    register, logout, login, sendPasswordResetLink
 }
 
 export default authService

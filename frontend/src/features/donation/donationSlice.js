@@ -7,7 +7,7 @@ const initialState = {
     isLoading: false,
     isError: false,
     isSuccess: false,
-    message: ''
+    message: '' 
 }
 
 export const setDonation = createAsyncThunk('donations/create', async(donationData, thunkAPI) => {

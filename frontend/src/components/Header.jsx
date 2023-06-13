@@ -57,7 +57,7 @@ function Header () {
                 FeedEveryone
             </Typography>
             {user 
-            ? (
+            ? ( 
             <Box sx={{margin: '1rem'}}>
                 <Box sx={{display: {xs: 'inline', sm: 'inline', md: 'none' }}}>
                     <GiHamburgerMenu style={linkStyle} onClick={()=>setHam(!ham)}/>
@@ -87,6 +87,7 @@ function Header () {
                 </Box>
                 <Button color="warning" sx={{display: {xs: 'none', sm: 'inline', md: 'inline' }}}><Link to='/register' style={linkStyle}> <FaUser/> Register</Link></Button>
                 <Button color="warning" sx={{display: {xs: 'none', sm: 'inline', md: 'inline' }}}><Link to='/login' style={linkStyle}> <FaSignInAlt/> Login</Link></Button>
+                <Button color="warning" onClick={()=>setHam(!ham)}><Link to='/forget-pass' style={hamLinkStyle}> <FaSignInAlt/> Forget Password</Link></Button>
             </Box>)}
         </Root>
     )
